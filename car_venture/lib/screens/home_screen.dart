@@ -1,7 +1,7 @@
+import 'package:car_venture/screens/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/vehicle_model.dart';
-import '../routes.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

@@ -1,8 +1,9 @@
+import 'package:car_venture/add_vehicle_screen.dart';
+import 'package:car_venture/screens/home_screen.dart';
+import 'package:car_venture/screens/login_screen.dart';
+import 'package:car_venture/screens/vehicle_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/vehicle_detail_screen.dart';
-import 'screens/add_vehicle_screen.dart';
+
 
 class AppRoutes {
   static const String login = '/login';
