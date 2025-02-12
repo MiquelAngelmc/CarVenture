@@ -1,14 +1,17 @@
+import 'package:car_venture/screens/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'screens/add_vehicle_screen.dart';
 import 'screens/rental_history_screen.dart';
+import 'screens/login_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Inicializa Firebase
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,42 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      initialRoute: AppRoutes.login, // Pantalla inicial (Login)
       routes: {
         '/add-vehicle': (context) => AddVehicleScreen(),
         '/rental-history': (context) => RentalHistoryScreen(),
+        ...AppRoutes.getRoutes(), // Mantiene otras rutas definidas
       },
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('CarVenture Mallorca')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/add-vehicle');
-              },
-              child: const Text('Añadir Vehículo'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/rental-history');
-              },
-              child: const Text('Historial de Alquiler'),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
